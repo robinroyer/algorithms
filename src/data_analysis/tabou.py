@@ -56,7 +56,6 @@ option2 = getArgv(3)
 options = option1 + option2
 # tableau de nombre a trier
 extracted_data=[]
-blocks = []
 
 # lecture du fichier contenant l'exemplaire
 read=open(path,'r')
@@ -78,11 +77,10 @@ for j in extracted_data:
     blocksbis.append(Block(j))
     blocksbis.append(Block([j[1],j[2],j[0]]))
     blocksbis.append(Block([j[2],j[1],j[0]]))
-blocks.append(blocksbis)
 
 # Execution
 t1= time.time()
-hauteur, tower = dynamiquetabou(extracted_data)
+hauteur, tower = dynamiquetabou(blocksbis)
 t2= time.time()
 
 # Affichage

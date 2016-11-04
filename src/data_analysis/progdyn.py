@@ -8,6 +8,7 @@ from triParSurface import triInsertionSurfaceDecroissant
 
 # En entrée, il faut les blocks ordonnées : appeler la fonction triInsertionSurface
 def dynamique(blocksordonne):
+    blocksordonne = triInsertionSurfaceDecroissant(blocksordonne)
     towers=[]
     hauteurs=[]
     for block in blocksordonne :
@@ -31,7 +32,7 @@ def dynamique(blocksordonne):
             hauteurs.append(block[0])
         # Au final, on obtient un nombre de tours égale au nombre de blocks de départ et il nous suffit de chercher la tour
         # la plus haute
-    return towers,hauteurs
+    return max(hauteurs),towers[hauteurs.index(max(hauteurs))]
 # on peut directement retourner la tour la plus grande et sa hauteur en retournant  :
 #  max(hauteurs),towers[hauteurs.index(max(hauteurs))]
 
@@ -55,7 +56,6 @@ option2 = getArgv(3)
 options = option1 + option2
 # tableau de nombre a trier
 extracted_data=[]
-blocks = []
 
 # lecture du fichier contenant l'exemplaire
 read=open(path,'r')
@@ -77,13 +77,13 @@ for j in extracted_data:
     blocksbis.append(Block(j))
     blocksbis.append(Block([j[1],j[2],j[0]]))
     blocksbis.append(Block([j[2],j[1],j[0]]))
-blocks.append(blocksbis)
+
 
 t1= time.time()
-hauteur, tower = dynamique(extracted_data)
+hauteur, tower = dynamique(blocksbis)
 t2= time.time()
 
-# Affichage 
+# Affichage
 if PRINT_BLOCK in options:
     print(" Les blocks dans l'ordre sont sont : \r\n")
     for num in tower:

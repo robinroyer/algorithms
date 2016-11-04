@@ -7,13 +7,13 @@ from readblocks import Block
 from triParSurface import triInsertionSurfaceDecroissant
 
 
+
 def vorace(blocks):
     blocks = triInsertionSurfaceDecroissant(blocks)
-    random.seed()
     tower=[]
     hauteurs=[j[0] for j in blocks]
     hauteur=0
-    tower.append(Block([1000,1000,0]))
+    tower.append(Block([0,1000,1000]))
     for j in blocks :
         if j.posersur(tower[-1]) :
             haut=j[0]
@@ -42,7 +42,7 @@ option2 = getArgv(3)
 options = option1 + option2
 # tableau de nombre a trier
 extracted_data=[]
-blocks = []
+
 
 # lecture du fichier contenant l'exemplaire
 read=open(path,'r')
@@ -64,11 +64,10 @@ for j in extracted_data:
     blocksbis.append(Block(j))
     blocksbis.append(Block([j[1],j[2],j[0]]))
     blocksbis.append(Block([j[2],j[1],j[0]]))
-blocks.append(blocksbis)
 
 # Execution du MergeSort
 t1= time.time()
-hauteur, tower = vorace(extracted_data)
+hauteur, tower = vorace(blocksbis)
 t2= time.time()
 
 # Affichage du tri
