@@ -4,7 +4,7 @@ import sys
 # safe sys.argv access
 from get_argv import getArgv
 from readblocks import Block
-from triParSurface import triInsertionSurfaceDecroissant
+
 
 def dynamiquetabou(blocks):
     tower=[]

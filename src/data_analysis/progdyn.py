@@ -4,11 +4,11 @@ import sys
 # safe sys.argv access
 from get_argv import getArgv
 from readblocks import Block
-from triParSurface import triInsertionSurfaceDecroissant
+from triParSurface import triSurfaceDecroissant
 
 # En entrée, il faut les blocks ordonnées : appeler la fonction triInsertionSurface
 def dynamique(blocksordonne):
-    blocksordonne = triInsertionSurfaceDecroissant(blocksordonne)
+    blocksordonne = triSurfaceDecroissant(blocksordonne)
     towers=[]
     hauteurs=[]
     for block in blocksordonne :
