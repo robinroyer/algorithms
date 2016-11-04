@@ -1,5 +1,5 @@
 def triInsertionSurfaceDecroissant(blocks):
-    aires = [j[0]*j[1] for j in blocks]
+    aires = [j[2]*j[1] for j in blocks]
     for i in range(len(aires)):
         x = aires[i]
         y = Block(blocks[i])
