@@ -12,7 +12,7 @@ def dynamique(blocksordonne):
         for tower in towers :
             if block.posersur(tower[-1]) :
                 peutEtrePoser=True
-                hauteurblock.append(block[2]+hauteurs[towers.index(tower)])
+                hauteurblock.append(block[0]+hauteurs[towers.index(tower)])
                 indextower.append(towers.index(tower))
         if peutEtrePoser :
             best=hauteurblock.index(max(hauteurblock))
@@ -20,7 +20,7 @@ def dynamique(blocksordonne):
             hauteurs.append(hauteurblock[best])
         else :
             towers.append([block])
-            hauteurs.append(block[2])
+            hauteurs.append(block[0])
         # Au final, on obtient un nombre de tours égale au nombre de blocks de départ et il nous suffit de chercher la tour 
         # la plus haute
     return towers,hauteurs
